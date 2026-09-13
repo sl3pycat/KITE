@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Setting up KITE</title>
+  <script src="main.js"></script>
+</head>
+
+<body onload="checkStorageAccess()">
+  
+  <section to="check storage access">
+    <text>KITE</text>
+    <text>Kaplay Integrated Text Editor</text>
+  </section>
+  
+  <section to="grant storage access" style="display:none">
+    KITE needs persistant storage to work properly.
+    <button onclick="grantStorageAccess()">Grant access</button>
+    <button onclick="location.replace('../overview/main.html')">continue without access</button>
+  </section>
+  
+</body>
+
+</html>
