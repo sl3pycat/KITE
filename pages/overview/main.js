@@ -1,6 +1,8 @@
+//init storage base
 const storage = new DataStore()
 
 async function refreshProjectList(){
+  //refreshes the main list
   const projects = (await storage.getItem("projects"))||[]
   const list = document.querySelector("list")
   list.innerText = ""
@@ -10,6 +12,7 @@ async function refreshProjectList(){
 }
 
 async function createProject(){
+  //creates a new project
   const result = prompt("project name")
   if(result){
     const projects = (await storage.getItem("projects"))||[]
@@ -20,11 +23,17 @@ async function createProject(){
 }
 
 async function openProject(name){
-  sessionStorage.currentProject = name
-  location.href = "../project/main.html"
+  //opens the project editor
+  localStorage.currentProject = name
+  location.href = "../editor/main.html"
 }
 
 async function deleteProject(name){
+  //delete all keys accociated with the target project
   let entries = await storage.keys()
-  entries.forEach(entry)
+  for (const entry of entries) {if(entry.startsWith(`$${name}.`))await storage.removeItem(entry) }
+  //delete the target project
+  let projects = (await storage.getItem("projects"))||[]
+  await storage.setItem("projects",projects.filter(entry=>entry!==name))
+  refreshProjectList()
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KITE - Editor</title>
+  <script src="../../libs/ace.js"></script>
+  <script src="../../libs/ace.javascript.js"></script>
+  <script src="../../libs/ace.monokai.js"></script>
+  <script src="../../libs/worker-javascript.js"></script>
+  <script src="../../libs/datastore.js"></script>
+  <script src="main.js"></script>
+</head>
+
+<body onload="startEditor()">
+  <bar><button>drawer</button><text>Editor</text><button onclick="startPreview(true)">debug</button><button onclick="startPreview(false)">run</button></bar>
+  <div id="editor" style="width:100vw;height:100vh"></div>
+</body>
+
+</html>
